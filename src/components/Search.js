@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
+import PosterImage from "./PosterImage";
 
 
 function Search() {
@@ -26,7 +27,7 @@ function Search() {
             {state && state.map(({ poster_path, id }) => (
                 <Link to={`/Movie/${id}`} style={{ width: "150px", display: "inline-flex", margin: "10px" }}>
                     <div>
-                        <img style={{ width: "150px" }} src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt="" />
+                        <PosterImage image={poster_path } />
                     </div>
                 </Link>
             ))}

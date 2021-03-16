@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import Credit from "./Credit"
+import PosterImage from "./PosterImage";
 
 
 function Movie() {
@@ -18,6 +20,8 @@ function Movie() {
             });
     }, [url]);
 
+    console.log(state)
+
     return (
         <div>
             <h1>Movie</h1>
@@ -25,15 +29,19 @@ function Movie() {
                 <div>
                     <h3>{state.original_title}</h3>
                     <p>{state.overview}</p>
-                    <img style={{ width: "150px" }} src={`https://image.tmdb.org/t/p/original/${state.poster_path}`} alt="" />
+                    <PosterImage   image={state.poster_path}/>
 
                     <ul>
                     {state.production_companies.map(({name, logo_path}) => (
                         <li>{name}
-                        <img style={{ width: "150px" }} src={`https://image.tmdb.org/t/p/original/${logo_path}`} alt="" />
+        
+                        <PosterImage image={logo_path} />
+
                         </li>
                         ))}
                     </ul>
+
+                    <Credit id={id} />
                             
                 </div>
             }
